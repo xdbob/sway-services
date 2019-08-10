@@ -1,0 +1,7 @@
+# This file is mostly inspired from https://github.com/swaywm/sway/wiki/Systemd-integration
+
+[Desktop Entry]
+Name=Sway Service
+Comment=SirCmpwn's Wayland window manager as a systemd service
+Exec=sway-user-service
+Type=Application
