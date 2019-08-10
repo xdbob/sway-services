@@ -1,4 +1,5 @@
 services = [
+  'mako.service',
   'sway.service',
   'wayland-session-pre.target',
   'wayland-session.target',
