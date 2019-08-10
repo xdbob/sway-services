@@ -1,0 +1,11 @@
+[Unit]
+Description=Idle manager for Wayland
+Documentation=man:swayidle(1)
+PartOf=wayland-session.target
+
+[Service]
+Type=simple
+ExecStart=@prefix@/bin/swayidle-conf
+
+[Install]
+WantedBy=wayland-session.target

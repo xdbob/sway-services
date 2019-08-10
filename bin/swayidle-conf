@@ -1,0 +1,67 @@
+#!/usr/bin/python3
+
+import yaml
+import sys
+import os
+
+config_files = [
+    '/etc/sway/idle.yaml',
+    os.path.expanduser('~/.config/sway/idle.yaml'),
+]
+
+env_config = os.environ.get('SWAYIDLE_CONFIG')
+if env_config is not None:
+    config_files += env_config
+
+options = {
+    'debug': '-d',
+    'wait': '-w',
+}
+
+config = {}
+
+found = False
+for f in config_files:
+    if not os.path.isfile(f):
+        continue
+    found = True
+    try:
+        with open(f) as conf:
+            newconf = yaml.load(conf, yaml.SafeLoader)
+            config.update(newconf)
+    except Exception as e:
+        sys.stderr('{}: Could not load {} ({})'.format(sys.argv[0], f, e))
+        sys.stderr.flush()
+
+if not found:
+    sys.stderr('{}: WARNING: No config file found'.format(sys.argv[0]))
+    sys.stderr.flush()
+
+args = ['swayidle']
+
+for k in config:
+    c = config[k]
+    if c is None or c is False or c is []:
+        continue
+
+    if k == 'timeouts':
+        for t in c:
+            args.append('timeout')
+            args.append(str(t['timeout']))
+            args.append(t['command'])
+            if 'resume' in t:
+                args.append('resume')
+                args.append(t['resume'])
+
+        continue
+
+    if k in options and c:
+        args.append(options[k])
+        continue
+
+    args.append(k)
+    args.append(c)
+
+args.extend(sys.argv[1:])
+
+os.execvp('swayidle', args)
