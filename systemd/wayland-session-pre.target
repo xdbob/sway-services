@@ -14,3 +14,4 @@ Requires=basic.target
 Before=wayland-session.target
 RefuseManualStart=yes
 StopWhenUnneeded=yes
+BindsTo=graphical-session-pre.target
