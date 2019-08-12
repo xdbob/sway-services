@@ -4,5 +4,6 @@ project('sway-services',
 )
 
 subdir('bin')
+subdir('config')
 subdir('systemd')
 subdir('wayland-sessions')
