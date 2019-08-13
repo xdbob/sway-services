@@ -7,6 +7,7 @@ After=wayland-session.target
 [Service]
 Type=simple
 ExecStart=@prefix@/bin/swayidle-conf
+Restart=always
 
 [Install]
 WantedBy=wayland-session.target
