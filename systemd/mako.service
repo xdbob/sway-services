@@ -5,8 +5,9 @@ PartOf=wayland-session.target
 After=wayland-session.target
 
 [Service]
-Type=simple
+Type=dbus
 ExecStart=/usr/bin/mako
+BusName=org.freedesktop.Notifications
 
 [Install]
 WantedBy=wayland-session.target
