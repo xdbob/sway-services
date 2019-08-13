@@ -1,6 +1,18 @@
-#!/bin/sh
+#!/bin/sh -e
+
+# From: https://people.debian.org/~mpitt/systemd.conf-2016-graphical-session.pdf
+
+# robustness: if the previous graphical session left some failed units,
+# reset them so that they don't break this startup
+for unit in $(systemctl --user --no-legend --state=failed list-units | cut-f1 -d''); do
+	partof="$(systemctl --user show -p PartOf --value)"
+	if [ "$partof" = "graphical-session.target" ] || [ "$partof" = "wayland-session.target"]; then
+		systemctl --user reset-failed $unit
+	fi
+done
 
 # first import environment variables from the login manager
 systemctl --user import-environment
+
 # then start the service
 exec systemctl --wait --user start sway.service
