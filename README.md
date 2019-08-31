@@ -1,4 +1,4 @@
-#sway-services
+# sway-services
 
 A collection of tools, utilities and mostly unit files to handle a systemd-user
 sway session.
