@@ -2,6 +2,7 @@
 Description=A lightweight Wayland notification daemon
 Documentation=man:mako(1)
 PartOf=wayland-session.target
+Requires=wayland-session.target
 After=wayland-session.target
 
 [Service]
