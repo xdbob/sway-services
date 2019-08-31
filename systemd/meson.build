@@ -1,4 +1,5 @@
 services = [
+  'kanshi.service',
   'mako.service',
   'sway.service',
   'wayland-session-pre.target',

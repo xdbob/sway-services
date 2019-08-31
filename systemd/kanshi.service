@@ -1,0 +1,14 @@
+[Unit]
+Description=Dynamic output configuration
+Documentation=man:kanshi(1)
+PartOf=wayland-session.target
+Requires=wayland-session.target
+After=wayland-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/kanshi
+Restart=always
+
+[Install]
+WantedBy=wayland-session.target
