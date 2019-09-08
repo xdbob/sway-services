@@ -3,10 +3,10 @@
 [Unit]
 Description=sway - SirCmpwn's Wayland window manager
 Documentation=man:sway(5)
-BindsTo=wayland-session.target
-Wants=wayland-session-pre.target
-After=wayland-session-pre.target
-Before=wayland-session.target
+BindsTo=sway-session.target
+Wants=sway-session-pre.target
+After=sway-session-pre.target
+Before=sway-session.target
 
 [Service]
 Type=notify
