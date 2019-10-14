@@ -4,10 +4,10 @@
 
 # robustness: if the previous graphical session left some failed units,
 # reset them so that they don't break this startup
-for unit in $(systemctl --user --no-legend --state=failed list-units | cut-f1 -d''); do
+for unit in $(systemctl --user --no-legend --state=failed list-units | cut -f1 -d' '); do
 	partof="$(systemctl --user show -p PartOf --value)"
-	if [ "$partof" = "graphical-session.target" ] || [ "$partof" = "wayland-session.target"]; then
-		systemctl --user reset-failed $unit
+	if [ "$partof" = "graphical-session.target" ] || [ "$partof" = "wayland-session.target" ]; then
+		systemctl --user reset-failed "$unit"
 	fi
 done
 
