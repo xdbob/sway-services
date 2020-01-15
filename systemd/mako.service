@@ -8,6 +8,7 @@ After=wayland-session.target
 [Service]
 Type=dbus
 ExecStart=/usr/bin/mako
+ExecReload=/usr/bin/makoctl reload
 BusName=org.freedesktop.Notifications
 
 [Install]
