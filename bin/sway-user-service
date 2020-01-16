@@ -1,11 +1,11 @@
-#!/bin/sh -e
+#!/bin/bash -e
 
 # From: https://people.debian.org/~mpitt/systemd.conf-2016-graphical-session.pdf
 
 # robustness: if the previous graphical session left some failed units,
 # reset them so that they don't break this startup
 for unit in $(systemctl --user --no-legend --state=failed list-units | cut -f1 -d' '); do
-	partof="$(systemctl --user show -p PartOf --value)"
+	partof="$(systemctl --user show -p PartOf --value "$unit")"
 	if [ "$partof" = "graphical-session.target" ] || [ "$partof" = "wayland-session.target" ]; then
 		systemctl --user reset-failed "$unit"
 	fi
