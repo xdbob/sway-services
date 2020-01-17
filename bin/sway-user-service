@@ -13,6 +13,9 @@ for unit in $(systemctl --user --no-legend --state=failed list-units | cut -f1 -
 	fi
 done
 
+# /etc/profice contains a log of important environment variables
+source /etc/profile
+
 # save environment variables that will be added to systemd
 new_env=$(systemctl --user show-environment | cut -d'=' -f 1 | sort | comm -13 - <(env | cut -d'=' -f 1 | sort))
 
