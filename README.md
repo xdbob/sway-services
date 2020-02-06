@@ -7,6 +7,8 @@ Usage: run `Sway Service` from your desktop manager or run `sway-user-service`.
 
 ## Provided targets
 
+* `sway-session.target`
+* `sway-session-pre.target`
 * `wayland-session.target`
 * `wayland-session-pre.target`
 
