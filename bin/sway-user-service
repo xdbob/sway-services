@@ -19,6 +19,8 @@ done
 # /etc/profice contains a log of important environment variables
 source /etc/profile
 
+export XDG_CURRENT_DESKTOP=sway
+
 # save environment variables that will be added to systemd
 new_env=$(systemctl --user show-environment | cut -d'=' -f 1 | sort | comm -13 - <(env | cut -d'=' -f 1 | sort))
 
