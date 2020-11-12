@@ -16,7 +16,7 @@ for unit in $(systemctl --user --no-legend --state=failed list-units | cut -f1 -
 	done
 done
 
-# /etc/profice contains a log of important environment variables
+# /etc/profile contains a lot of important environment variables
 source /etc/profile
 
 export XDG_CURRENT_DESKTOP=sway
