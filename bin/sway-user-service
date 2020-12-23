@@ -6,7 +6,7 @@
 
 # robustness: if the previous graphical session left some failed units,
 # reset them so that they don't break this startup
-for unit in $(systemctl --user --no-legend --state=failed list-units | cut -f1 -d' '); do
+for unit in $(systemctl --user --no-legend --state=failed --plain list-units | cut -f1 -d' '); do
 	partof="$(systemctl --user show -p PartOf --value "$unit")"
 	for target in sway-session.target wayland-session.target graphical-session.target; do
 		if [ "$partof" = "$target" ]; then
