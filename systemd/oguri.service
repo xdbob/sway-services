@@ -1,0 +1,13 @@
+[Unit]
+Description=An animated wallpaper daemon for Wayland compositors
+Documentation=https://github.com/vilhalmer/oguri
+PartOf=wayland-session.target
+Requires=wayland-session.target
+After=wayland-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/oguri
+
+[Install]
+WantedBy=wayland-session.target

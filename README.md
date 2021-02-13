@@ -20,6 +20,7 @@ wayland exclusive services
 * `sway.service`
 * `kanshi.service`
 * `mako.service`
+* `oguri.service`
 * `swayidle.service`
 
 ## Notes
