@@ -25,7 +25,7 @@ export XDG_CURRENT_DESKTOP=sway
 new_env=$(systemctl --user show-environment | cut -d'=' -f 1 | sort | comm -13 - <(env | cut -d'=' -f 1 | sort))
 
 # import environment variables from the login manager
-systemctl --user import-environment
+systemctl --user import-environment $new_env
 
 # then start the service
 systemctl --wait --user start sway.service
